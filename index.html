@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en" data-tone="day">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Frank Remmy · support engineer moving into security operations and GRC</title>
+<meta name="description" content="Ugochukwu (Frank Remmy) Chigbata. Almost six years in L2/L3 support, MSc in IT Management and Cyber Security, Top 10 in Malta at the SANS CTF European Championship. Based in Malta.">
+<meta name="theme-color" content="#0b0e12">
+<link rel="preload" href="media/fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="media/fonts/jbmono.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/site.css">
+<script type="importmap">{ "imports": { "three": "./vendor/three.module.js" } }</script>
+<!-- RlJBTkt7djFld19zMHVyY2VfYWx3NHlzfQ== -->
+<script>
+  // Runs before anything else so the first paint is the intake ticket, never the bare page. Every
+  // visit gets the ticket; only the stills tooling (?film-p=) skips it.
+  (function () {
+    var d = document.documentElement, q = location.search, rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (/film-p=/.test(q)) d.classList.add('no-intro');
+    if (rm) d.classList.add('calm');
+  })();
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Ugochukwu Remigius Chigbata","alternateName":"Frank Remmy","jobTitle":"Support Engineer","homeLocation":{"@type":"Country","name":"Malta"},"sameAs":["https://www.linkedin.com/in/frankremmy/","https://github.com/frankremmy","https://x.com/ufrankremmy","https://frankremmy.wordpress.com/"],"knowsAbout":["Security operations","Digital forensics and incident response","ISO 27001","NIST CSF 2.0","Wazuh","ELK","Microsoft Sentinel","Active Directory","AWS","WordPress"]}
+</script>
+</head>
+<body>
+
+<div id="intro" aria-hidden="true">
+  <div class="lid t"></div><div class="lid b"></div>
+  <div class="ticket">
+    <div class="tk-head"><span class="tk-dot"></span><span id="tk-title">ALERT · new visitor · severity: low</span></div>
+    <pre id="tk-body"></pre>
+  </div>
+</div>
+
+<canvas id="scene" aria-hidden="true"></canvas>
+<div id="veil" aria-hidden="true"></div>
+
+<header class="hdr nav" id="hdr">
+  <a class="brand" href="#top" title="Back to the start of the film"><i class="live" aria-hidden="true"></i>Frank Remmy<span class="sr"> (open to new roles)</span></a>
+  <nav class="hnav" id="hnav" aria-label="Sections">
+    <a href="#cases" data-nav="cases">Cases</a>
+    <a href="#skills" data-nav="skills">Skills</a>
+    <a href="#path" data-nav="path">Path</a>
+    <a href="#arena" data-nav="arena">Arena</a>
+    <a href="#writing" data-nav="writing">Writing</a>
+    <a href="#creds" data-nav="creds">Credentials</a>
+  </nav>
+  <div class="hact">
+    <button type="button" class="hbtn hsnd" id="snd-btn" aria-pressed="false" aria-label="Mute sound" title="Mute the sound">
+      <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h2.6L8.2 3v10L4.6 10H2z" fill="currentColor"/><path class="wv" d="M10.6 5.6c.7.6 1.1 1.5 1.1 2.4s-.4 1.8-1.1 2.4M12.6 3.8c1.2 1.1 1.9 2.6 1.9 4.2s-.7 3.1-1.9 4.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path class="mx" d="M10.8 6.2l3.4 3.6m0-3.6l-3.4 3.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    </button>
+    <button type="button" class="hbtn hterm" data-open-term aria-label="Open the terminal"><span class="ps">$_</span><kbd>`</kbd></button>
+    <a class="hcta" href="#contact">Get in touch</a>
+    <button type="button" class="hbtn hmenu" id="menu-btn" aria-expanded="false" aria-controls="menu"><i aria-hidden="true"></i><span>Menu</span></button>
+  </div>
+</header>
+<div class="menu nav" id="menu" hidden></div>
+<aside class="rail rail-l nav" id="rail-l" aria-label="Elsewhere"></aside>
+<nav class="rail rail-r nav" id="rail-r" aria-label="Chapters of the film"></nav>
+
+
+<section id="top" class="film" aria-label="The case, told as a film">
+  <div class="film-in">
+    <div class="caps" id="caps"></div>
+  </div>
+</section>
+
+<main class="after">
+
+  <section id="cases" class="sec">
+    <p class="k">08 · Cases</p>
+    <h2>Open one and the evidence comes first.</h2>
+    <p class="lede" id="cases-lede">Every number here comes from a write-up you can read.</p>
+    <div class="cases" id="cases-list"></div>
+    <h3 class="also-h">Also on the bench</h3>
+    <div class="also" id="also"></div>
+  </section>
+
+  <section id="skills" class="sec">
+    <p class="k">09 · Proficiency</p>
+    <h2>Six buckets. Shake them if you like.</h2>
+    <p class="lede">Ball size and finish follow how I know the thing. Solid and glossy means I've done it for pay. Solid is lab-proven. Outlined is coursework. Ghosted is still early. Tap a ball for where it came from.</p>
+    <div class="tb-tools">
+      <button type="button" data-tb="shake">Shake the buckets</button>
+      <button type="button" data-tb="tidy">Tidy up</button>
+      <button type="button" data-tb="paid" aria-pressed="false">Only what I've done for pay</button>
+      <span class="tb-legend"><i class="lg P"></i>Paid <i class="lg L"></i>Lab <i class="lg A"></i>Coursework <i class="lg F"></i>Early</span>
+    </div>
+    <div class="toolbox">
+      <canvas id="toolbox" aria-hidden="true"></canvas>
+      <div class="tb-tip" id="tb-tip" hidden></div>
+    </div>
+    <ul class="sr" id="skills-sr"></ul>
+    <div class="jar" aria-label="Things I won't claim">
+      <div class="jar-lid">Sealed</div>
+      <p class="jar-h">Won't claim</p>
+      <ul id="wont"></ul>
+      <p class="dim small">Tools I've read about but not used hands-on. If a job ad lists them, I'll tell you that straight.</p>
+    </div>
+  </section>
+
+  <section id="path" class="sec pinned">
+    <div class="pin">
+      <p class="k">10 · Path</p>
+      <h2>Nigeria to Malta, one log line at a time.</h2>
+      <p class="lede">I studied Agricultural Economics &amp; Extension and kept ending up at a computer. Support taught me to read a broken system from the user's side. Security is the same job with an adversary in it.</p>
+      <div class="path-stage">
+        <div class="path-side" aria-hidden="true"><span id="path-yr">2018</span><span id="path-pl">Nigeria</span><i class="path-bar"><b></b></i></div>
+        <ol class="log" id="path-log"></ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="witnesses" class="sec pinned">
+    <div class="pin">
+      <p class="k">11 · Witness statements</p>
+      <h2>People I've worked with, on the record.</h2>
+      <div class="wits" id="wits"></div>
+    </div>
+  </section>
+
+  <section id="arena" class="sec">
+    <p class="k">12 · Arena</p>
+    <h2>Want to work a shift?</h2>
+    <div class="arena">
+      <article class="ar">
+        <h3>Triage the queue</h3>
+        <p>Sixty seconds, real log lines from the case mixed with boring ones. Call each one: true positive or false positive.</p>
+        <button type="button" id="triage-open">Start a shift</button>
+        <p class="dim small" id="triage-best"></p>
+      </article>
+      <article class="ar">
+        <h3>The terminal</h3>
+        <p>Bash with a query bar. Try <code>query event_source:"Sysmon"</code>, <code>phish</code> or <code>cd twist</code>. Press <kbd>`</kbd> anywhere.</p>
+        <button type="button" data-open-term>Open it</button>
+      </article>
+      <article class="ar">
+        <h3>Five flags</h3>
+        <p>Hidden around this site, using tricks from CTFs I've actually played. Find all five and the terminal gives you a case number. Mention it when you write.</p>
+        <ol class="flags" id="flag-list"></ol>
+        <form class="flag-form" id="flag-form"><input id="flag-in" placeholder="FRANK{...}" autocomplete="off" spellcheck="false" aria-label="Flag"><button type="submit">Check</button></form>
+        <p class="small" id="flag-msg" aria-live="polite"></p>
+      </article>
+    </div>
+  </section>
+
+  <section id="writing" class="sec">
+    <p class="k">13 · Writing</p>
+    <h2>Notes from the lab.</h2>
+    <p class="lede dim small" id="writing-src">The latest posts from my blog.</p>
+    <ol class="posts" id="posts"></ol>
+  </section>
+
+  <section id="creds" class="sec">
+    <p class="k">14 · Credentials</p>
+    <h2>Papers, and placings.</h2>
+    <div class="ranks" id="ranks"></div>
+    <div class="creds" id="creds-list"></div>
+  </section>
+
+  <section id="contact" class="sec contact">
+    <p class="k">15 · Contact</p>
+    <h2>Got a queue, an audit or an incident?</h2>
+    <p class="lede">I'm in Malta and open to security operations, GRC and security-minded support roles, on site or remote.</p>
+    <div class="ct-row" id="ct-row"></div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-grid">
+      <div class="foot-id">
+        <a class="brand" href="#top"><i class="live" aria-hidden="true"></i>Frank Remmy</a>
+        <p>Support engineer moving into security operations and GRC. Based in Malta, open to on-site and remote roles.</p>
+        <a class="foot-cta" href="https://www.linkedin.com/in/frankremmy/" target="_blank" rel="noopener">Message me on LinkedIn ↗</a>
+      </div>
+      <nav class="foot-col" aria-label="On this page">
+        <p class="k">On this page</p>
+        <ol id="foot-secs">
+          <li><a href="#cases" data-nav="cases"><span class="no">08</span>Cases</a></li>
+          <li><a href="#skills" data-nav="skills"><span class="no">09</span>Skills</a></li>
+          <li><a href="#path" data-nav="path"><span class="no">10</span>Path</a></li>
+          <li><a href="#witnesses" data-nav="witnesses"><span class="no">11</span>Witnesses</a></li>
+          <li><a href="#arena" data-nav="arena"><span class="no">12</span>Arena</a></li>
+          <li><a href="#writing" data-nav="writing"><span class="no">13</span>Writing</a></li>
+          <li><a href="#creds" data-nav="creds"><span class="no">14</span>Credentials</a></li>
+          <li><a href="#contact" data-nav="contact"><span class="no">15</span>Contact</a></li>
+        </ol>
+      </nav>
+      <nav class="foot-col" aria-label="Elsewhere">
+        <p class="k">Elsewhere</p>
+        <ul>
+          <li><a href="https://www.linkedin.com/in/frankremmy/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+          <li><a href="https://github.com/frankremmy" target="_blank" rel="noopener">GitHub ↗</a></li>
+          <li><a href="https://x.com/ufrankremmy" target="_blank" rel="noopener">X ↗</a></li>
+          <li><a href="https://frankremmy.wordpress.com/" target="_blank" rel="noopener">The blog ↗</a></li>
+        </ul>
+      </nav>
+      <div class="foot-col">
+        <p class="k">Try</p>
+        <ul>
+          <li><button type="button" data-open-term>The terminal <kbd>`</kbd></button></li>
+          <li><button type="button" data-open-triage>Triage the queue</button></li>
+          <li><a href="#arena">Five flags</a></li>
+          <li><a href="#top">Replay the film ↑</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <p>Built by hand. No cookies, no trackers, no analytics. Your browser told me a few things and I kept them on this page.</p>
+      <p class="dim">© <span id="yr"></span> Frank Remmy · <a href="/.well-known/security.txt">security.txt</a></p>
+    </div>
+  </div>
+</footer>
+
+<div id="term" class="term" role="dialog" aria-modal="false" aria-label="Terminal" hidden>
+  <div class="term-bar"><span>frank@case-0001: ~</span><span class="dim small">simulated · nothing leaves your browser</span><button type="button" id="term-close" aria-label="Close the terminal">×</button></div>
+  <div class="term-out" id="term-out" aria-live="polite"></div>
+  <form class="term-in" id="term-form"><span class="ps">$</span><input id="term-in" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Command"></form>
+  <div class="term-chips" id="term-chips"></div>
+</div>
+
+<div id="triage" class="triage" role="dialog" aria-modal="true" aria-label="Triage game" hidden></div>
+
+<div id="ransom" class="ransom" aria-hidden="true" hidden></div>
+
+<noscript>
+  <style>#intro,#scene{display:none!important}.film{height:auto!important}</style>
+  <div class="sec"><p>This page plays a short film when JavaScript is on. Here's the plain version: Frank Remmy is a support engineer moving into security operations and GRC, based in Malta. See <a href="https://www.linkedin.com/in/frankremmy/">LinkedIn</a> and <a href="https://frankremmy.wordpress.com/">the blog</a>.</p></div>
+</noscript>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+# Hello, polite crawler. Read the whole site, it's all public.
+# FRANK{p0lite_crawl3rs_r3ad_f1rst}
+User-agent: *
+Allow: /
+
+Sitemap: https://frankremmy.github.io/sitemap.xml

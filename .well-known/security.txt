@@ -1,0 +1,6 @@
+# Found something wrong with this site? Tell me before you tell anyone else.
+Contact: https://www.linkedin.com/in/frankremmy/
+Expires: 2027-10-26T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://frankremmy.github.io/.well-known/security.txt
+# FRANK{c0ntact_th3_d3fender}

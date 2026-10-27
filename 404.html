@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Not found · Frank Remmy</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0b0e12">
+<style>
+@font-face { font-family: 'Bricolage Grotesque'; src: url(/media/fonts/bricolage.woff2) format('woff2'); font-weight: 200 800; font-display: swap; }
+@font-face { font-family: 'JetBrains Mono'; src: url(/media/fonts/jbmono.woff2) format('woff2'); font-weight: 100 800; font-display: swap; }
+:root { --bg: #0b0e12; --ink: #e8eef4; --dim: #8796a5; --amber: #ffb020; --red: #ff5a47; }
+* { box-sizing: border-box; }
+html { background: var(--bg); color: var(--ink); font: 17px/1.55 'Bricolage Grotesque', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; }
+main { width: min(620px, 100%); }
+.k { font: 12px 'JetBrains Mono', ui-monospace, monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--amber); margin: 0 0 14px; }
+h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); line-height: 1.02; letter-spacing: -.03em; margin: 0 0 16px; font-weight: 650; }
+h1 b { color: var(--red); font-weight: inherit; }
+p { color: #c3ced9; margin: 0 0 22px; }
+pre { font: 13px/1.7 'JetBrains Mono', ui-monospace, monospace; background: #0d1117; border: 1px solid #263240; border-radius: 12px; padding: 14px 16px; color: #b9c6d3; white-space: pre-wrap; overflow-wrap: anywhere; margin: 0 0 26px; }
+.dim { color: var(--dim); }
+a { display: inline-block; background: var(--ink); color: var(--bg); border-radius: 999px; padding: 10px 18px; text-decoration: none; font-weight: 600; }
+a:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+</style>
+</head>
+<body>
+<main>
+  <p class="k">404 · case not found</p>
+  <h1>Nothing at <b>this path.</b></h1>
+  <p>Not even an attacker. The link may be old, or someone typed it by hand.</p>
+  <pre>GET <span id="path">/</span> &rarr; 404
+<span class="dim">status: closed, no evidence at this location
+evidence tag: FRANK{3rr0r_p4g3s_t4lk_t00}</span></pre>
+  <a href="/">Back to the case file</a>
+</main>
+<script>document.getElementById('path').textContent = location.pathname;</script>
+</body>
+</html>
