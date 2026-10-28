@@ -172,7 +172,8 @@ function renderCaptions() {
   box.querySelectorAll('.cap').forEach(el => CAPS.push({ el, a: +el.dataset.in, b: +el.dataset.out, count: el.querySelector('[data-count]'), at: +(el.dataset.at || 0) }));
   lastP = -1; onScroll();
 }
-function filmRange() { const top = $('#top'); return [top.offsetTop, top.offsetHeight - innerHeight]; }
+// Never zero: a window that loads at zero height would otherwise make progress 0 / 0.
+function filmRange() { const top = $('#top'); return [top.offsetTop, Math.max(1, top.offsetHeight - innerHeight)]; }
 export function goTo(p) {
   const [y0, h] = filmRange();
   scrollTo({ top: y0 + p * h, behavior: calm ? 'auto' : 'smooth' });
@@ -455,6 +456,8 @@ async function startFilm() {
   introDone.then(() => chrome.ready());
   setupFlags(); setupRansom(); setupExtras(); setupObservers();
   addEventListener('scroll', onScroll, { passive: true });
+  // Clicking the phishing link on the hero laptop plays the film on to the first chapter.
+  addEventListener('film:link', () => goToChapter('hook'));
   addEventListener('resize', () => { lastP = -1; onScroll(); });
   const filmReady = startFilm().then(() => { onScroll(); chrome?.refresh(); });
   setupSound();

@@ -140,6 +140,8 @@ export async function createFilm(canvas, { visitor = {}, onLost, calm = false } 
     const dt = calm ? 1 / 60 : Math.min(0.05, (now - last) / 1000); last = now;
     const t = calm ? 20 : now / 1000;
     p = calm ? target : p + (target - p) * (1 - Math.pow(0.0008, dt));
+    // One bad value would otherwise stick for good, since each frame eases from the last.
+    if (!Number.isFinite(p)) p = target;
     if (Math.abs(target - p) < 1e-5) p = target;
     const night = ss(0.235, 0.29, p) * (1 - ss(0.985, 1, p));
     world.night = night;
@@ -156,7 +158,7 @@ export async function createFilm(canvas, { visitor = {}, onLost, calm = false } 
   function start() { if (running || !visible) return; running = true; last = performance.now(); requestAnimationFrame(frame); }
 
   return {
-    setProgress(v, now = false) { target = clamp(v); if (now) p = target; settle = 40; start(); },
+    setProgress(v, now = false) { if (!Number.isFinite(v)) return; target = clamp(v); if (now) p = target; settle = 40; start(); },
     setVisible(v) { visible = v; if (v) start(); else running = false; },
     // Called when the intake ticket opens.
     enter() { if (enterAt < 0) { enterAt = performance.now(); settle = 400; start(); } },

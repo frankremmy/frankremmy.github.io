@@ -1,5 +1,5 @@
 // The hero is a toy, like the reference's cable: drag to spin the laptop, click it to shut the lid,
-// hover the link to see where it really goes. Only live while the film sits on the hero shot, and
+// hover the link to see where it really goes, click the link to follow it into the film. Only live while the film sits on the hero shot, and
 // everything springs back as soon as the visitor scrolls on. Nothing here is needed to move on.
 
 import * as THREE from 'three';
@@ -43,8 +43,12 @@ export default function heroChapter(world) {
   }, { passive: true });
   const end = e => {
     if (!drag) return;
-    // A press that barely moved is a click: shut or open the lid.
-    if (drag.moved < 6 && e.type === 'pointerup') lidTarget = lidTarget > 0.5 ? 0 : 1;
+    // A press that barely moved is a click. On the link it follows the link (main.js rolls the film
+    // on to the first chapter); anywhere else on the laptop it shuts or opens the lid.
+    if (drag.moved < 6 && e.type === 'pointerup') {
+      if (overLink(hit(e))) dispatchEvent(new CustomEvent('film:link'));
+      else lidTarget = lidTarget > 0.5 ? 0 : 1;
+    }
     drag = null; document.body.style.cursor = '';
   };
   addEventListener('pointerup', end, { passive: true });
