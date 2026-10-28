@@ -237,8 +237,7 @@ function renderCases() {
 function renderSkills() {
   $('#wont').innerHTML = WONT_CLAIM.map((w, i) => `<li style="--i:${i}">${esc(w)}</li>`).join('');
   $('.jar').setAttribute('data-s', '0.7');
-  const T = { P: 'paid work', L: 'lab-proven', A: 'coursework', F: 'early days' };
-  $('#skills-sr').innerHTML = BUCKETS.map(b => `<li>${esc(b.name)}: ${b.skills.map(s => `${esc(s[0])} (${T[s[1]]})`).join(', ')}</li>`).join('');
+  $('#skills-sr').innerHTML = BUCKETS.map(b => `<li>${esc(b.name)}: ${b.skills.map(s => esc(s[0])).join(', ')}</li>`).join('');
 }
 // Countries only. Before 2025 the work was done from Nigeria; the 2025 job was remote; the MSc is in Malta.
 const PATH_PLACE = y => +y < 2025 ? 'Nigeria' : +y === 2025 ? 'Remote' : 'Malta';

@@ -1,10 +1,9 @@
 // Skills as balls in see-through buckets. Verlet circles on one 2D canvas, no physics library.
-// Each ball keeps its home colour wherever it lands, so after a shake the strays show. Ball size
-// and finish follow Frank's own tiers: P paid work, L lab-proven, A coursework, F early days.
+// Each ball keeps its home colour wherever it lands, so after a shake the strays show. Every ball
+// is the same size and finish: the buckets sort skills by area, not by how they were learned.
 
 import { BUCKETS } from './content.js';
 
-const TIER = { P: { s: 1, name: 'Paid work' }, L: { s: 0.9, name: 'Lab-proven' }, A: { s: 0.8, name: 'Coursework' }, F: { s: 0.72, name: 'Early days' } };
 const G = 1500, DAMP = 0.992, STEP = 1 / 60, ITER = 4, WALL = 4;
 const rand = (a, b) => a + Math.random() * (b - a);
 
@@ -12,7 +11,7 @@ export function initToolbox(cv, tip, { calm = false } = {}) {
   const x = cv.getContext('2d');
   let W = 0, H = 0, dpr = 1, R = 20, buckets = [], segs = [], balls = [], running = false, visible = false, acc = 0, last = 0, still = 0;
 
-  BUCKETS.forEach((b, bi) => b.skills.forEach(([name, tier, note]) => balls.push({ name, tier, note, home: bi, x: 0, y: 0, px: 0, py: 0, r: 10, keep: 0, out: false, hop: rand(2.5, 7.5), lines: null })));
+  BUCKETS.forEach((b, bi) => b.skills.forEach(([name, , note]) => balls.push({ name, note, home: bi, x: 0, y: 0, px: 0, py: 0, r: 10, keep: 0, out: false, hop: rand(2.5, 7.5), lines: null })));
 
   function layout() {
     const r = cv.getBoundingClientRect();
@@ -34,7 +33,7 @@ export function initToolbox(cv, tip, { calm = false } = {}) {
     const most = Math.max(...BUCKETS.map(b => b.skills.length)), b0 = buckets[0];
     const area = (b0.wt + b0.wb) * (b0.y1 - b0.y0) * 0.62;
     R = Math.max(12, Math.min(44, Math.sqrt(area / (most * Math.PI * 1.1))));
-    for (const b of balls) { b.r = R * TIER[b.tier].s; b.lines = null; }
+    for (const b of balls) { b.r = R * 0.94; b.lines = null; }
   }
 
   // Pack each bucket's balls from the bottom, odd rows offset. drop lifts them up so they fall in.
@@ -123,21 +122,12 @@ export function initToolbox(cv, tip, { calm = false } = {}) {
     const col = BUCKETS[b.home].color, a = b.out ? 0.28 : 1;
     x.globalAlpha = a;
     x.beginPath(); x.arc(b.x, b.y, b.r, 0, Math.PI * 2);
-    let ink = '#0b0e12';
-    if (b.tier === 'P') {
-      const g = x.createRadialGradient(b.x - b.r * 0.35, b.y - b.r * 0.4, b.r * 0.1, b.x, b.y, b.r);
-      g.addColorStop(0, shade(col, 1.35)); g.addColorStop(0.55, col); g.addColorStop(1, shade(col, 0.55));
-      x.fillStyle = g; x.fill();
-      x.beginPath(); x.arc(b.x, b.y, b.r * 0.78, Math.PI * 1.1, Math.PI * 1.45); x.strokeStyle = 'rgba(255,255,255,.55)'; x.lineWidth = b.r * 0.1; x.lineCap = 'round'; x.stroke();
-    } else if (b.tier === 'L') {
-      x.fillStyle = shade(col, 0.85); x.fill();
-    } else if (b.tier === 'A') {
-      x.fillStyle = 'rgba(11,14,18,.85)'; x.fill(); x.lineWidth = 2.5; x.strokeStyle = col; x.stroke(); ink = col;
-    } else {
-      x.fillStyle = 'rgba(11,14,18,.6)'; x.fill(); x.setLineDash([3, 3]); x.lineWidth = 1.2; x.strokeStyle = shade(col, 0.7); x.stroke(); x.setLineDash([]); ink = shade(col, 0.85);
-    }
+    const g = x.createRadialGradient(b.x - b.r * 0.35, b.y - b.r * 0.4, b.r * 0.1, b.x, b.y, b.r);
+    g.addColorStop(0, shade(col, 1.35)); g.addColorStop(0.55, col); g.addColorStop(1, shade(col, 0.55));
+    x.fillStyle = g; x.fill();
+    x.beginPath(); x.arc(b.x, b.y, b.r * 0.78, Math.PI * 1.1, Math.PI * 1.45); x.strokeStyle = 'rgba(255,255,255,.55)'; x.lineWidth = b.r * 0.1; x.lineCap = 'round'; x.stroke();
     const { lines, fs } = wrap(b);
-    x.font = `600 ${fs}px "Bricolage Grotesque", system-ui, sans-serif`; x.fillStyle = ink; x.textAlign = 'center'; x.textBaseline = 'middle';
+    x.font = `600 ${fs}px "Bricolage Grotesque", system-ui, sans-serif`; x.fillStyle = '#0b0e12'; x.textAlign = 'center'; x.textBaseline = 'middle';
     lines.forEach((l, i) => x.fillText(l, b.x, b.y + (i - (lines.length - 1) / 2) * fs * 1.08));
     x.globalAlpha = 1;
   }
@@ -208,7 +198,7 @@ export function initToolbox(cv, tip, { calm = false } = {}) {
   let tipT = 0;
   function showTip(b) {
     const B = BUCKETS[b.home];
-    tip.innerHTML = `<b style="color:${B.color}">${b.name}</b><span class="tier">${B.name} · ${TIER[b.tier].name}</span><br>${b.note}`;
+    tip.innerHTML = `<b style="color:${B.color}">${b.name}</b><span class="bucket">${B.name}</span><br>${b.note}`;
     tip.hidden = false;
     const tw = tip.offsetWidth, th = tip.offsetHeight;
     tip.style.left = Math.max(8, Math.min(W - tw - 8, b.x - tw / 2)) + 'px';
