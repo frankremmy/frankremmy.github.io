@@ -10,7 +10,7 @@ const rand = (a, b) => a + Math.random() * (b - a);
 
 export function initToolbox(cv, tip, { calm = false } = {}) {
   const x = cv.getContext('2d');
-  let W = 0, H = 0, dpr = 1, R = 20, buckets = [], segs = [], balls = [], running = false, visible = false, acc = 0, last = 0, still = 0, paid = false;
+  let W = 0, H = 0, dpr = 1, R = 20, buckets = [], segs = [], balls = [], running = false, visible = false, acc = 0, last = 0, still = 0;
 
   BUCKETS.forEach((b, bi) => b.skills.forEach(([name, tier, note]) => balls.push({ name, tier, note, home: bi, x: 0, y: 0, px: 0, py: 0, r: 10, keep: 0, out: false, hop: rand(2.5, 7.5), lines: null })));
 
@@ -224,14 +224,6 @@ export function initToolbox(cv, tip, { calm = false } = {}) {
     wake();
   });
   root.querySelector('[data-tb="tidy"]')?.addEventListener('click', () => { pack(null, 140); wake(); });
-  const paidBtn = root.querySelector('[data-tb="paid"]');
-  paidBtn?.addEventListener('click', () => {
-    paid = !paid; paidBtn.setAttribute('aria-pressed', String(paid));
-    paidBtn.textContent = paid ? 'Put everything back' : 'Only what I\'ve done for pay';
-    if (paid) balls.forEach(b => { if (b.tier !== 'P') b.out = true; });
-    else { balls.forEach(b => b.out = false); pack(null, 160); }
-    wake();
-  });
 
   // ---------- start ----------
   layout(); pack();
