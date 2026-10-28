@@ -1,7 +1,7 @@
-// Site chrome: the header and footer navigation, and the two rails that frame the film.
+// Site chrome: the header navigation and the two rails that frame the film.
 //
-// The header and footer are plain links in index.html, so they work with no JavaScript at all.
-// This module keeps them in the page's order (sections are reordered per reader), marks where
+// The header is plain links in index.html, so it works with no JavaScript at all.
+// This module keeps it in the page's order (sections are reordered per reader), marks where
 // you are, builds the phone menu, and draws the rails while the film is on screen:
 //
 //   left rail   where else to find me, written up the side of the screen
@@ -30,12 +30,10 @@ export function initChrome({ chapters, links, filmRange, goToChapter, calm = fal
     id: s.id, el: s, name: NAMES[s.id] || s.id,
     no: ((s.querySelector('.k')?.textContent || '').match(/^\d+/) || [''])[0]
   }));
-  const hnav = $('#hnav'), fnav = $('#foot-secs');
+  const hnav = $('#hnav');
   for (const s of secs) {
     const a = hnav?.querySelector(`[data-nav="${s.id}"]`);
     if (a) hnav.appendChild(a);
-    const li = fnav?.querySelector(`[data-nav="${s.id}"]`)?.closest('li');
-    if (li) { li.querySelector('.no').textContent = s.no; fnav.appendChild(li); }
   }
 
   // ---------- phone menu ----------
